@@ -1,1 +1,42 @@
+# Ignore the commands.txt file
 commands.txt
+
+# Ignore the .claude directory
+.claude/
+
+# Ignore the .vscode directory
+.vscode/
+
+# Ignore the .idea directory
+.idea/
+
+# Ignore the .DS_Store file (macOS)
+.DS_Store
+
+# Ignore the node_modules directory
+node_modules/
+
+# Ignore the dist directory (if using a build tool)
+dist/
+
+# Ignore .env files
+.env
+.env.local
+.env.development
+.env.test
+
+# Ignore log files
+*.log
+
+# Ignore coverage reports
+coverage/
+
+# Ignore virtual environment directories
+.venv/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore .txt files
+*.txt
