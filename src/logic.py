@@ -340,6 +340,39 @@ def calcular_saldo(dados, mes, ano):
     return saldo(dados, mes, ano)
 
 
+def calcular_media_mensal(dados, ano, tipo="despesas"):
+    """
+    Devolve a média mensal de receitas ou despesas para o ano indicado.
+
+    `tipo` pode ser "receitas" ou "despesas". Por defeito calcula a média
+    de despesas. A média é calculada apenas sobre os meses em que houve
+    pelo menos um lançamento (não divide por 12 fixo).
+    """
+    if tipo == "receitas":
+        lista = dados.get("receitas", [])
+    else:
+        lista = dados.get("despesas", [])
+
+    totais_por_mes = {}
+    for item in lista:
+        data = item.get("data", "")
+        if not data.startswith(str(ano)):
+            continue
+        mes = data[5:7]
+        if mes in totais_por_mes:
+            totais_por_mes[mes] = totais_por_mes[mes] + item.get("valor", 0)
+        else:
+            totais_por_mes[mes] = item.get("valor", 0)
+
+    if len(totais_por_mes) == 0:
+        return 0.0
+
+    soma = 0.0
+    for mes in totais_por_mes:
+        soma = soma + totais_por_mes[mes]
+    return round(soma / len(totais_por_mes), 2)
+
+
 # ============================================================================
 # Agregações por categoria
 # ============================================================================
