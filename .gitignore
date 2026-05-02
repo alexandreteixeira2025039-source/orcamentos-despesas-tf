@@ -18,4 +18,23 @@ node_modules/
 
 # Ignore the dist directory (if using a build tool)
 
+# Ignnore .env files
+.env
+.env.local
+.env.development
+.env.test
 
+# Ignore log files
+*.log
+
+# Ignore coverage reports
+coverage/
+
+# Ignore virtual environment directories
+.venv/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# 
