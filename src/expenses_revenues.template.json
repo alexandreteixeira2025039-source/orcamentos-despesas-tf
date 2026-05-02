@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "familia": "Família Silva",
+    "moeda": "EUR",
+    "criado_em": "2026-02-01",
+    "ultima_atualizacao": "2026-02-01"
+  },
+  "membros": [
+    { "id": 1, "nome": "João Silva",  "relacao": "pai" },
+    { "id": 2, "nome": "Maria Silva", "relacao": "mãe" },
+    { "id": 3, "nome": "Tomás Silva", "relacao": "filho" }
+  ],
+  "receitas": [],
+  "despesas": []
+}
