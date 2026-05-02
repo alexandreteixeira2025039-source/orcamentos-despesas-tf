@@ -53,14 +53,15 @@ O `main.py` nunca toca directamente no JSON. Tudo passa por `logic.py`.
 
 ## ▶️ Como correr
 
-A partir da raiz do projeto:
+A partir da raiz do projeto, ou de qualquer outro directório:
 
 ```bash
-cd Src
-python main.py
+python Src/main.py
+# ou, equivalentemente
+cd Src && python main.py
 ```
 
-Não é preciso instalar nada. O ficheiro `expenses_revenues.json` é criado automaticamente na primeira execução, caso ainda não exista.
+O `DB_PATH` é resolvido relativamente ao próprio script, por isso a app funciona seja qual for o CWD. Não é preciso instalar nada — usa apenas a biblioteca standard. O ficheiro `expenses_revenues.json` é criado automaticamente na primeira execução, caso ainda não exista.
 
 ---
 
@@ -136,19 +137,22 @@ O ficheiro `expenses_revenues.json` está dividido em 4 secções:
 
 | Função | Devolve | Descrição |
 |--------|---------|-----------|
-| `carregar_dados(caminho)` | `dict` | Lê o JSON do disco |
-| `guardar_dados(dados, caminho)` | `None` | Grava o JSON em disco |
-| `adicionar_receita(dados, receita)` | `dict` | Insere uma nova receita |
-| `adicionar_despesa(dados, despesa)` | `dict` | Insere uma nova despesa |
-| `remover_lancamento(dados, id_lanc)` | `dict` | Remove pelo ID (R001, D001, ...) |
-| `editar_lancamento(dados, id_lanc, alteracoes)` | `dict` | Edita campos de um lançamento |
-| `total_receitas(dados, mes=None, ano=None)` | `float` | Soma de receitas, opcionalmente filtrada |
-| `total_despesas(dados, mes=None, ano=None)` | `float` | Soma de despesas, opcionalmente filtrada |
-| `saldo(dados, mes=None, ano=None)` | `float` | Receitas menos despesas |
-| `agrupar_por_categoria(dados, tipo)` | `dict` | Total por categoria |
-| `resumo_mensal(dados, mes, ano)` | `dict` | Resumo completo do mês |
-| `validar_lancamento(lancamento)` | `bool` | Valida campos obrigatórios |
-| `gerar_id(tipo)` | `str` | Gera novo ID sequencial |
+| `carregar_dados(caminho)` | `dict` | Lê o JSON do disco. Se o ficheiro não existir, devolve uma estrutura vazia válida. |
+| `guardar_dados(dados, caminho)` | `None` | Grava o JSON em disco (UTF-8, indent=2). Atualiza `metadata.ultima_atualizacao`. |
+| `adicionar_receita(dados, receita)` | `dict` | Insere uma nova receita (auto-completa campos opcionais). |
+| `adicionar_despesa(dados, despesa)` | `dict` | Insere uma nova despesa (auto-completa campos opcionais). |
+| `remover_lancamento(dados, id_lanc)` | `dict` | Remove pelo ID (`R001`, `D001`, ...). |
+| `editar_lancamento(dados, id_lanc, alteracoes)` | `dict` | Edita campos de um lançamento (recebe um `dict` com os campos a alterar). |
+| `total_receitas(dados, mes=None, ano=None)` | `float` | Soma de receitas, opcionalmente filtrada por mês/ano (strings ou ints). |
+| `total_despesas(dados, mes=None, ano=None)` | `float` | Soma de despesas, opcionalmente filtrada por mês/ano. |
+| `saldo(dados, mes=None, ano=None)` | `float` | Receitas menos despesas no período indicado. |
+| `calcular_saldo(dados, mes, ano)` | `float` | Alias de `saldo` — usado pelo `main.py`. |
+| `agrupar_por_categoria(dados, tipo="despesas")` | `dict` | Total por categoria. `tipo` pode ser `"receitas"` ou `"despesas"`. |
+| `resumo_mensal(dados, mes, ano)` | `dict` | Resumo completo do mês (totais e agrupamentos). |
+| `validar_lancamento(lancamento)` | `bool` | Valida campos obrigatórios e formato (id `R###`/`D###`, valor positivo, descrição não vazia). |
+| `gerar_id(tipo, dados=None)` | `str` | Gera o próximo ID sequencial (`R001`, `D001`, ...) consultando `dados`. |
+
+> Estrutura completa do JSON e listas de categorias/métodos de pagamento em [`Docs/data-schema.md`](Docs/data-schema.md).
 
 ---
 
