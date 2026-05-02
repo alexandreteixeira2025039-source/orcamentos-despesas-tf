@@ -1,8 +1,9 @@
 import logic
 import os
 
-# Configuração de caminhos
-DB_PATH = "Src/expenses_revenues.json"
+# Configuração de caminhos — resolve sempre para o ficheiro ao lado deste script,
+# independentemente do directório a partir do qual se corra `python main.py`.
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "expenses_revenues.json")
 
 def limpar_ecra():
     """Limpa a consola dependendo do Sistema Operativo."""
@@ -85,6 +86,29 @@ def main():
             resumo = logic.agrupar_por_categoria(dados)
             for cat, total in resumo.items():
                 print(f"{cat.capitalize()}: {formatar_moeda(total)}")
+
+        elif opcao == "7":
+            print("\n--- Editar / Remover Lançamento ---")
+            id_lanc = input("ID do lançamento (ex.: R001, D001): ").strip().upper()
+            acao = input("Editar (E) ou Remover (R)? ").strip().lower()
+
+            if acao == "r":
+                dados = logic.remover_lancamento(dados, id_lanc)
+                print(f"🗑️  Lançamento {id_lanc} removido.")
+            elif acao == "e":
+                campo = input("Campo a editar (descricao/valor/categoria): ").strip().lower()
+                novo_valor = input("Novo valor: ").strip()
+                if campo == "valor":
+                    try:
+                        novo_valor = float(novo_valor)
+                    except ValueError:
+                        print("⚠️ Erro: valor inválido.")
+                        novo_valor = None
+                if novo_valor is not None:
+                    dados = logic.editar_lancamento(dados, id_lanc, {campo: novo_valor})
+                    print(f"✏️  Lançamento {id_lanc} editado.")
+            else:
+                print("⚠️ Acção inválida (use E ou R).")
 
         elif opcao == "8":
             logic.guardar_dados(dados, DB_PATH)
