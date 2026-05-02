@@ -147,6 +147,7 @@ O ficheiro `expenses_revenues.json` está dividido em 4 secções:
 | `total_despesas(dados, mes=None, ano=None)` | `float` | Soma de despesas, opcionalmente filtrada por mês/ano. |
 | `saldo(dados, mes=None, ano=None)` | `float` | Receitas menos despesas no período indicado. |
 | `calcular_saldo(dados, mes, ano)` | `float` | Alias de `saldo` — usado pelo `main.py`. |
+| `calcular_media_mensal(dados, ano, tipo="despesas")` | `float` | Média mensal de receitas ou despesas num ano (divide pelos meses com lançamentos). |
 | `agrupar_por_categoria(dados, tipo="despesas")` | `dict` | Total por categoria. `tipo` pode ser `"receitas"` ou `"despesas"`. |
 | `resumo_mensal(dados, mes, ano)` | `dict` | Resumo completo do mês (totais e agrupamentos). |
 | `validar_lancamento(lancamento)` | `bool` | Valida campos obrigatórios e formato (id `R###`/`D###`, valor positivo, descrição não vazia). |
