@@ -1,1 +1,21 @@
+# Ignore the commands.txt file
 commands.txt
+
+# Ignore the .claude directory
+.claude
+
+# Ignore the .vscode directory
+.vscode
+
+# Ignore the .idea directory
+.idea
+
+# Ignore the .DS_Store file (macOS)
+.DS_Store
+
+# Ignore the node_modules directory (if using Node.js)
+node_modules/
+
+# Ignore the dist directory (if using a build tool)
+
+
