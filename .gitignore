@@ -1,27 +1,25 @@
-<<<<<<< HEAD
-commands.txt
-=======
 # Ignore the commands.txt file
 commands.txt
 
 # Ignore the .claude directory
-.claude
+.claude/
 
 # Ignore the .vscode directory
-.vscode
+.vscode/
 
 # Ignore the .idea directory
-.idea
+.idea/
 
 # Ignore the .DS_Store file (macOS)
 .DS_Store
 
-# Ignore the node_modules directory (if using Node.js)
+# Ignore the node_modules directory
 node_modules/
 
 # Ignore the dist directory (if using a build tool)
+dist/
 
-# Ignnore .env files
+# Ignore .env files
 .env
 .env.local
 .env.development
@@ -40,5 +38,5 @@ coverage/
 __pycache__/
 *.pyc
 
-# 
->>>>>>> dev
+# Ignore .txt files
+*.txt
