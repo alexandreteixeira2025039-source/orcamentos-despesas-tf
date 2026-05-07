@@ -43,3 +43,6 @@ __pycache__/
 
 # Scratch / demo files
 demo_main.py
+
+# Office lock files
+~$*
