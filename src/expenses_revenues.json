@@ -3,7 +3,7 @@
     "familia": "Família Silva",
     "moeda": "EUR",
     "criado_em": "2026-02-01",
-    "ultima_atualizacao": "2026-05-05"
+    "ultima_atualizacao": "2026-05-08"
   },
   "membros": [
     {
@@ -189,6 +189,16 @@
       "valor": 100.0,
       "categoria": "salário",
       "data": "2026-05-05",
+      "membro_id": 1,
+      "recorrente": false,
+      "frequencia": "unica"
+    },
+    {
+      "id": "R018",
+      "descricao": "sala´rio",
+      "valor": 1100.0,
+      "categoria": "salário",
+      "data": "2026-05-08",
       "membro_id": 1,
       "recorrente": false,
       "frequencia": "unica"
@@ -993,6 +1003,17 @@
       "valor": 11.0,
       "categoria": "alimentação",
       "data": "2026-05-05",
+      "subcategoria": "",
+      "metodo_pagamento": "dinheiro",
+      "recorrente": false,
+      "frequencia": "unica"
+    },
+    {
+      "id": "D074",
+      "descricao": "Mecanico",
+      "valor": 150.0,
+      "categoria": "outros",
+      "data": "2026-05-08",
       "subcategoria": "",
       "metodo_pagamento": "dinheiro",
       "recorrente": false,
