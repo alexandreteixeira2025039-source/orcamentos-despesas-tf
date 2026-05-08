@@ -1,9 +1,6 @@
 # Ignore the commands.txt file
 commands.txt
 
-# Ignore the .claude directory
-.claude/
-
 # Ignore the .vscode directory
 .vscode/
 
